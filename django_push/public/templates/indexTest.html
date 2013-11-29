@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es" ng-app="pushApp">
+<head>
+	<title> Probando angular, ws, y android</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.2/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.2/angular-route.js"></script>
+	<script src='{{STATIC_URL}}js/apps/controllers.js'></script>
+</head>
+<body>
+
+
+<div class="row" ng-controller="NuevoMensajeCtrl">
+	<div class="container">
+		<h1>Enviar mensaje</h1>
+		to: <input type="text" name="_to" ng-model="_to" required>
+		from: <input type="text" name="_from" ng-model="_from" required>
+		title: <input type="text" name="_title" ng-model="_title" required>
+		message: <input type="text" name="_message" ng-model="_message" required>
+		activity: <input type="text" name="_activity" ng-model="_activity" required>
+		<button ng-click="nuevoMensaje()">Enviar</button>
+	</div>
+</div>
+
+<div class="row" ng-controller="MensajesListCtrl">
+	<div class="container">
+		<h1>Mis notificaciones</h1>
+			<h3>#{msj}</h3>
+			<table >
+				<tr>
+					<th>id</th>
+					<th>title</th>
+					<th>message</th>
+					<th>date</th>
+				</tr>
+				<tr ng-repeat="mensaje in mensajes">
+					<td>#{mensaje.pk}</td>
+					<td>#{mensaje.fields.title}</td>
+					<td>#{mensaje.fields.message}</td>
+					<td>#{mensaje.fields.send_date}</td>
+				</tr>
+			</table>
+	</div>
+</div>
+
+
+
+</body>
+</html>
